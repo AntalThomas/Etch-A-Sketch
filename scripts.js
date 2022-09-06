@@ -4,45 +4,45 @@ let pixel;
 let value = document.getElementById("value");
    value.innerHTML = sliderSelector.value;
 
-function createPixel (pixelAmount) {
-    for (let column = 0; column < pixelAmount; column++) {
+function createPixelRow (row) {
+    for (let column = 0; column < row; column++) {
         pixel = document.createElement('div');
         pixel.classList = 'pixel';
         container.appendChild(pixel);
     }
 }
 
-function canvasSize(gridSize) {
-    container.style.setProperty('--gridCount', gridSize);
+function createPixelColumn(column) {
+    container.style.setProperty('--gridCount', column);
 
-    for (let row = 0; row < gridSize; row++) {
-        createPixel(gridSize)
+    for (let row = 0; row < column; row++) {
+        createPixelRow(column)
     }
 }
 
 function userPrompt() {
-    let value = prompt("Choose grid size between 1 and 55:");
+    let userValue = prompt("Choose grid size between 1 and 55:");
 
-    if (value < 5 || value > 55) {
+    if (userValue < 1 || userValue > 55) {
         return userPrompt()
     }
-    canvasSize(value);
+    createPixelColumn(userValue);
 }
+
+function changeColor(pixel) {
+    pixel.style.backgroundColor = 'black';
+}
+
+container.addEventListener("mouseover", function (element) {
+    pixel = element.target;
+
+    if (pixel.matches("div.pixel")) {
+        changeColor(pixel);
+    }
+});
 
 sliderSelector.oninput = function() {
     value.innerHTML = this.value;
 }
-
-function changeColor (target) {
-    target.style.backgroundColor = 'black';
-}
-
-container.addEventListener("mouseover", function (e) {
-    target = e.target;
-
-    if (target.matches("div.pixel")) {
-        changeColor(target);
-    }
-});
 
 userPrompt();
