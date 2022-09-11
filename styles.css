@@ -1,9 +1,6 @@
-html {
-    margin: auto 0;
-    border: 0;
-}
-
 body {
+    padding: 0;
+    margin: 0;
     background-image: linear-gradient(rgb(200, 200, 200), rgb(255, 255, 255));
 }
 
