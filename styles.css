@@ -60,7 +60,7 @@ button {
 }
 
 #sizeSelector {
-    width: 100%;
+    width: 100vw;
     appearance: none;
     height: 30px;
     background: #d3d3d3;

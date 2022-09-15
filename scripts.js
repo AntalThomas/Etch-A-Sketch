@@ -20,14 +20,14 @@ function createPixelColumn(column) {
     }
 }
 
-function userPrompt() {
-    let userValue = prompt("Choose grid size between 1 and 55:");
+// function userPrompt() {
+//     let userValue = prompt("Choose grid size between 1 and 55:");
 
-    if (userValue < 1 || userValue > 55) {
-        return userPrompt()
-    }
-    createPixelColumn(userValue);
-}
+//     if (userValue < 1 || userValue > 55) {
+//         return userPrompt()
+//     }
+//     createPixelColumn(userValue);
+// }
 
 function changeColor(pixel) {
     pixel.style.backgroundColor = 'black';
@@ -43,6 +43,7 @@ container.addEventListener("mouseover", function (element) {
 
 sliderSelector.oninput = function() {
     value.innerHTML = this.value;
+    createPixelColumn(value.innerHTML);
 }
 
-userPrompt();
+// userPrompt();
